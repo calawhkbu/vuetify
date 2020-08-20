@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Projects from '../views/projects.vue'
 import Team from '../views/Team.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 
 Vue.use(VueRouter)
@@ -22,6 +23,11 @@ Vue.use(VueRouter)
     path: '/projects',
     name: 'My Project',
     component: Projects
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard
   },
   {
     path: '/about',
