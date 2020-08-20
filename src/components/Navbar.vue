@@ -1,70 +1,65 @@
 <template>
-<div>
-    <v-toolbar app dark color=" white"> 
-        <v-app-bar-nav-icon class="grey--text"
-        v-on:click="drawer=!drawer">
-        </v-app-bar-nav-icon>
-<v-toolbar-title class="text-uppercase grey--text">
-<span class="font-weight-light">Todo</span>
-<span>calaw</span>
-</v-toolbar-title >
-<v-spacer></v-spacer>
-<v-btn flat color="grey">
-<span>Sign Out</span>
-<v-icon right>exit_to_app</v-icon>
+  <div>
+      <v-snackbar v-model="snackbar">
+          <v-row wrap>
+        <span>Awesome!</span>
+        <v-divider/>
+        <span><v-btn class="white--text" right @click="snackbar=!snackbar">Close</v-btn></span>
+          </v-row>
+      </v-snackbar>
 
-</v-btn>
+
+    <v-toolbar app dark color=" white">
+      <v-app-bar-nav-icon class="grey--text" v-on:click="drawer=!drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title class="text-uppercase grey--text">
+        <span class="font-weight-light">Todo</span>
+        <span>calaw</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn flat color="grey">
+        <span>Sign Out</span>
+        <v-icon right>exit_to_app</v-icon>
+      </v-btn>
     </v-toolbar>
 
-  <v-navigation-drawer 
-    v-model="drawer"
-    app
-    class="primary">
-    <v-flex>
+    <v-navigation-drawer v-model="drawer" app class="primary">
+      <v-flex>
         123
-    <Popup/>
-    </v-flex>  
-    <v-list v-for="i in links" :key="i.text" > 
-          <router-link :to="i.route">
-    <v-list-title >
-        <v-list-title-action >
-<v-icon class="white--text"> {{i.icon}}</v-icon>     
-   </v-list-title-action>
-      <v-list-title-content>
-          <v-list-title-title class="white--text" style="textAlign:center">
-    {{i.text}}
-          </v-list-title-title>
-      </v-list-title-content>
-    </v-list-title>
-              </router-link>
-        </v-list>
-
-
+        <Popup />
+      </v-flex>
+      <v-list v-for="i in links" :key="i.text">
+        <router-link :to="i.route">
+          <v-list-title>
+            <v-list-title-action>
+              <v-icon class="white--text">{{i.icon}}</v-icon>
+            </v-list-title-action>
+            <v-list-title-content>
+              <v-list-title-title class="white--text" style="textAlign:center">{{i.text}}</v-list-title-title>
+            </v-list-title-content>
+          </v-list-title>
+        </router-link>
+      </v-list>
     </v-navigation-drawer>
-    </div>
+  </div>
 </template>
 <script>
-import Popup from './Popup'
+import Popup from "./Popup";
 export default {
-    components:{
-        Popup
-    },
-    data(){
-        return{
-            drawer:false,
-            links:[
-                {icon:'dashboard',text:"Dashboard",route:"/"},
-                {icon:'folder',text:"My Projects",route:"/projects"},
-                {icon:'person',text:"Team",route:"/team"},
-
-
-
-            ]
-        }
-    }
-    
-}
+  components: {
+    Popup,
+  },
+  data() {
+    return {
+      drawer: false,
+      links: [
+        { icon: "dashboard", text: "Dashboard", route: "/" },
+        { icon: "folder", text: "My Projects", route: "/projects" },
+        { icon: "person", text: "Team", route: "/team" },
+      ],
+      snackbar: true,
+    };
+  },
+};
 </script>
 <style lang="less" scoped>
-
 </style>
