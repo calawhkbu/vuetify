@@ -1,5 +1,13 @@
 <template>
   <div class="home">
+    <v-row>
+<v-btn class="pink white--text">click Me</v-btn></v-row>
+<v-row style="marginTop:10px">
+  <v-btn color="blue">click Me</v-btn>
+</v-row>
+
+    
+    
     <img alt="Vue logo" src="../assets/logo.png">
     <h1>This is HomePage</h1>
     <router-link to="/about"><a>about</a></router-link>
