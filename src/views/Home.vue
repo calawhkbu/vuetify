@@ -5,6 +5,14 @@
 <v-row style="marginTop:10px">
   <v-btn color="blue">click Me</v-btn>
 </v-row>
+<v-row style="marginTop:10px">
+  <v-btn flat="true" class="pink">transparent Me</v-btn>
+</v-row>
+  <v-btn depressed class="pink white--text">
+    <v-icon>email</v-icon>
+    </v-btn>
+
+
 
     
     
