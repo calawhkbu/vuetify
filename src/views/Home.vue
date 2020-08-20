@@ -9,9 +9,27 @@
   <v-btn flat="true" class="pink">transparent Me</v-btn>
 </v-row>
   <v-btn depressed class="pink white--text">
-    <v-icon>email</v-icon>
+    <v-icon left>email</v-icon> 
+    EMAIL
     </v-btn>
-
+     <v-btn depressed class="pink white--text">
+    <v-icon>lock</v-icon>
+    </v-btn>
+    
+      <v-btn depressed small class="pink white--text">
+    <v-icon left>email</v-icon> 
+    EMAIL
+    </v-btn>
+     <v-btn  class="pink white--text">
+    <v-icon>lock</v-icon>
+    </v-btn>
+     <v-btn depressed large class="pink white--text">
+   Right
+    <v-icon right large>email</v-icon> 
+    </v-btn>
+<v-btn  fab class="purple" dark>
+    <v-icon>favorite</v-icon>
+    </v-btn>
 
 
     
