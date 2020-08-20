@@ -2,9 +2,9 @@
   <div>
       <v-snackbar v-model="snackbar">
           <v-row wrap>
-        <span>Awesome!</span>
+        <span>Created Project!</span>
         <v-divider/>
-        <span><v-btn class="white--text" right @click="snackbar=!snackbar">Close</v-btn></span>
+        <span><v-btn class="white--text" right @click="snackbar=false">Close</v-btn></span>
           </v-row>
       </v-snackbar>
 
@@ -25,7 +25,7 @@
     <v-navigation-drawer v-model="drawer" app class="primary">
       <v-flex>
         123
-        <Popup />
+        <Popup @createdProject="snackbar=true"/>
       </v-flex>
       <v-list v-for="i in links" :key="i.text">
         <router-link :to="i.route">
@@ -56,7 +56,7 @@ export default {
         { icon: "folder", text: "My Projects", route: "/projects" },
         { icon: "person", text: "Team", route: "/team" },
       ],
-      snackbar: true,
+      snackbar: false,
     };
   },
 };

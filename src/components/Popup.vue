@@ -98,7 +98,11 @@ export default {
         };
         db.collection("projects")
           .add(project)
-          .then(() => {this.created = false;this.dialog=false});
+          .then(() => {
+            this.created = false;
+            this.dialog=false;
+            this.$emit('createdProject')
+            });
       }
     },
   },
