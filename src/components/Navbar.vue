@@ -18,9 +18,22 @@
     <v-navigation-drawer 
     v-model="drawer"
     app
-    
-    class="indigo">
-        <p>test</p>
+    class="primary">
+    <v-list v-for="i in links" :key="i.text" > 
+          <router-link :to="i.route">
+    <v-list-title >
+        <v-list-title-action >
+<v-icon class="white--text"> {{i.icon}}</v-icon>     
+   </v-list-title-action>
+      <v-list-title-content>
+          <v-list-title-title class="white--text" style="textAlign:center">
+    {{i.text}}
+          </v-list-title-title>
+      </v-list-title-content>
+    </v-list-title>
+              </router-link>
+        </v-list>
+
 
     </v-navigation-drawer>
     </div>
@@ -30,6 +43,14 @@ export default {
     data(){
         return{
             drawer:false,
+            links:[
+                {icon:'dashboard',text:"Dashboard",route:"/"},
+                {icon:'folder',text:"My Projects",route:"/projects"},
+                {icon:'person',text:"Team",route:"/team"},
+
+
+
+            ]
         }
     }
     
