@@ -1,39 +1,10 @@
 <template>
   <div class="home">
-    <v-row>
-<v-btn class="pink white--text">click Me</v-btn></v-row>
-<v-row style="marginTop:10px">
-  <v-btn color="blue">click Me</v-btn>
-</v-row>
-<v-row style="marginTop:10px">
-  <v-btn flat="true" class="pink">transparent Me</v-btn>
-</v-row>
-  <v-btn depressed class="pink white--text">
-    <v-icon left>email</v-icon> 
-    EMAIL
-    </v-btn>
-     <v-btn depressed class="pink white--text">
-    <v-icon>lock</v-icon>
-    </v-btn>
-    
-      <v-btn depressed small class="pink white--text">
-    <v-icon left>email</v-icon> 
-    EMAIL
-    </v-btn>
-     <v-btn  class="pink white--text">
-    <v-icon>lock</v-icon>
-    </v-btn>
-     <v-btn depressed large class="pink white--text">
-   Right
-    <v-icon right large>email</v-icon> 
-    </v-btn>
-<v-btn  fab class="purple" dark>
-    <v-icon>favorite</v-icon>
-    </v-btn>
 
-
-    
-    
+  <!-- <v-btn class="hidden-md-and-down">md or lessClick Me</v-btn> -->
+    <v-btn class="hidden-md-and-up"> md and up click me</v-btn>
+       <v-btn class="hidden-sm-only"> sm click me</v-btn>
+ 
     <img alt="Vue logo" src="../assets/logo.png">
     <h1>This is HomePage</h1>
     <router-link to="/about"><a>about</a></router-link>
