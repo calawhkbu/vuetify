@@ -2,21 +2,26 @@
   <div class="home">
     <h1 class="subheading grey--text">Dashboard</h1>
     <v-container class="my-5">
-
       <v-layout row class="mb-3" style="marginRight=10px">
-        <v-btn small flat color="grey" @click="sortBy('title')">
-          <v-icon left small>folder</v-icon>
-          By Project Name
-        </v-btn>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn small flat color="grey" @click="sortBy('title')" v-bind="attrs" v-on="on">
+              <v-icon left small>folder</v-icon>By Project Name
+            </v-btn>
+          </template>
+          <span>Sort by project name</span>
+        </v-tooltip>
+         <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn small flat color="grey" @click="sortBy('person')" v-bind="attrs" v-on="on">
+              <v-icon left small>person</v-icon>By Person 
+            </v-btn>
+          </template>
+          <span>Sort by Person name</span>
+        </v-tooltip>
 
-         <v-btn small flat color="grey" @click="sortBy('person')">
-          <v-icon left small>person</v-icon>
-          By Person 
-        </v-btn>
-
+ 
       </v-layout>
-
-
 
       <v-card flat class="light blue lighten-4" v-for="i in projects" :key="i.title">
         <v-layout row wrap :class="`pa-3 project ${i.status}`">
@@ -88,13 +93,11 @@ export default {
       ],
     };
   },
-  methods:{
-    sortBy(prop){
-      this.projects.sort((a,b)=>a[prop]<b[prop]?-1:0);
-    }
-  }
-
-  
+  methods: {
+    sortBy(prop) {
+      this.projects.sort((a, b) => (a[prop] < b[prop] ? -1 : 0));
+    },
+  },
 };
 </script>
 
@@ -110,12 +113,12 @@ export default {
 }
 
 .v-chip.complete {
-  background: #3cd1c2!important;
+  background: #3cd1c2 !important;
 }
 .v-chip.ongoing {
-  background: #ffaa2c!important;
+  background: #ffaa2c !important;
 }
 .v-chip.overdue {
-  background: #f83e70!important;
+  background: #f83e70 !important;
 }
 </style>
