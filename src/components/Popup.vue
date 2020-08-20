@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <v-dialog v-model="dialog" width="500">
+    <v-dialog v-model="dialog" width="500" >
       <template v-slot:activator="{ on, attrs }">
         <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">Create Project</v-btn>
       </template>
@@ -76,7 +76,7 @@ export default {
   },
   data() {
     return {
-      created: true,
+      created: false,
       title: "",
       information: "",
       date: null,
@@ -86,6 +86,8 @@ export default {
   methods: {
     submit() {
       if (this.$refs.form.validate()) {
+        this.created=true;
+
         console.log(this.title, this.information);
         const project = {
           title: this.title,
@@ -96,7 +98,7 @@ export default {
         };
         db.collection("projects")
           .add(project)
-          .then(() => (this.created = false));
+          .then(() => {this.created = false;this.dialog=false});
       }
     },
   },
