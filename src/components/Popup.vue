@@ -64,6 +64,7 @@
 </template>
 <script>
 import Vue from "vue";
+import db from '@/fb'
 
 const moment = require("moment");
 require("moment/locale/en-gb");
@@ -87,9 +88,20 @@ export default {
     };
   },
   methods: {
-    submit() {
+   async submit() {
      if(this.$refs.form.validate()) {
       console.log(this.title, this.information);
+      const project={
+        title:this.title,
+        content:this.information,
+        due:this.$moment(this.date).format("YYYY-MM-DD"),
+        status:"Open",
+        person:"The PopUP VUE"
+
+
+      }
+      await db.collection('projects').add(project);
+
 
      }
     },
