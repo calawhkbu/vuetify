@@ -15,10 +15,14 @@
 
 </v-btn>
     </v-toolbar>
-    <v-navigation-drawer 
+
+  <v-navigation-drawer 
     v-model="drawer"
     app
     class="primary">
+    <v-flex>
+    <Popup/>
+    </v-flex>  
     <v-list v-for="i in links" :key="i.text" > 
           <router-link :to="i.route">
     <v-list-title >
@@ -39,7 +43,11 @@
     </div>
 </template>
 <script>
+import Popup from './Popup'
 export default {
+    components:{
+        Popup
+    },
     data(){
         return{
             drawer:false,
