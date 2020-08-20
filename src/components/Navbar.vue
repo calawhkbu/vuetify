@@ -21,6 +21,7 @@
     app
     class="primary">
     <v-flex>
+        123
     <Popup/>
     </v-flex>  
     <v-list v-for="i in links" :key="i.text" > 

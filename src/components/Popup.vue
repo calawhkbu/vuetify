@@ -9,14 +9,43 @@
         <v-card-title class="headline grey lighten-2">Create Project</v-card-title>
 
         <v-card-text>
-          <v-text-field label="Title" v-model="title"
-          prepend-icon="folder"></v-text-field>
-          <v-textarea label="Information"
-          v-model="information"
-          prepend-icon="edit"></v-textarea>
-          <v-btn flat class="success mx0 mt-3"
-          @click="submit"
-          >Add Project</v-btn>
+          <v-text-field label="Title" v-model="title" prepend-icon="folder"></v-text-field>
+          <v-textarea label="Information" v-model="information" prepend-icon="edit"></v-textarea>
+          <v-row>
+            <v-col cols="12" lg="6">
+              <v-menu
+                ref="menu1"
+                v-model="menu1"
+                :close-on-content-click="false"
+                transition="scale-transition"
+                offset-y
+                max-width="290px"
+                min-width="290px"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <v-text-field
+                    v-model="date"
+                    label="Due Date"
+                    hint="MM/DD/YYYY format"
+                    persistent-hint
+                    prepend-icon="event"
+                    v-bind="attrs"
+                    @blur="date = parseDate(dateFormatted)"
+                    v-on="on"
+                  ></v-text-field>
+                </template>
+
+                <v-date-picker v-model="date" no-title @input="menu1 = false"></v-date-picker>
+              </v-menu>
+              <p>
+                Date in ISO format:
+                <strong>{{ date }}</strong>
+              </p>
+              <div>moment Date YYYY:{{calDate}}</div>
+            </v-col>
+          </v-row>
+
+          <v-btn flat class="success mx0 mt-3" @click="submit">Add Project</v-btn>
         </v-card-text>
 
         <v-divider></v-divider>
@@ -29,7 +58,19 @@
   </div>
 </template>
 <script>
+import Vue from "vue";
+
+const moment = require("moment");
+require("moment/locale/en-gb");
+
+Vue.use(require("vue-moment"), {
+  moment,
+});
+
 export default {
+  mounted() {
+    console.log(Vue.moment("2019-01-01").format("YYYY")); //es
+  },
   data() {
     return {
       title: "",
@@ -37,11 +78,15 @@ export default {
       date: null,
     };
   },
-  methods:{
-      submit(){
-
-console.log(this.title,this.information)
-      }
-  }
+  methods: {
+    submit() {
+      console.log(this.title, this.information);
+    },
+  },
+  computed: {
+    calDate: function () {
+      return this.date?this.$moment(this.date).format("YYYY"):'';
+    },
+  },
 };
 </script>
