@@ -9,10 +9,12 @@
         <v-card-title class="headline grey lighten-2">Create Project</v-card-title>
 
         <v-card-text>
-          <v-text-field label="Title" v-model="title" prepend-icon="folder"></v-text-field>
+          <v-form class="px-3 " ref="form">
+          <v-text-field label="Title" v-model="title" prepend-icon="folder" :rules="inputRules"></v-text-field>
           <v-textarea label="Information" v-model="information" prepend-icon="edit"></v-textarea>
           <v-row>
             <v-col cols="12" lg="6">
+
               <v-menu
                 ref="menu1"
                 v-model="menu1"
@@ -21,6 +23,7 @@
                 offset-y
                 max-width="290px"
                 min-width="290px"
+                 
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
@@ -46,7 +49,9 @@
           </v-row>
 
           <v-btn flat class="success mx0 mt-3" @click="submit">Add Project</v-btn>
+         </v-form>
         </v-card-text>
+      
 
         <v-divider></v-divider>
 
@@ -76,11 +81,17 @@ export default {
       title: "",
       information: "",
       date: null,
+      inputRules:[
+        v=>v.length>=3 || 'Minimum Length is 3 characters'
+      ]
     };
   },
   methods: {
     submit() {
+     if(this.$refs.form.validate()) {
       console.log(this.title, this.information);
+
+     }
     },
   },
   computed: {
